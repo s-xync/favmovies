@@ -2,13 +2,17 @@ import {
   GET_NOW_PLAYING,
   GET_NOW_PLAYING_ERROR,
   TOGGLE_FAVOURITE,
-  HYDRATE_FAVOURITES
+  HYDRATE_FAVOURITES,
+  GET_MOVIE_DETAILS,
+  GET_MOVIE_DETAILS_ERROR
 } from "../types";
 
 const initialState = {
   moviesArray: null,
   moviesError: false,
-  favourites: []
+  favourites: [],
+  movieDetails: null,
+  movieError: false
 };
 
 export default (state = initialState, action) => {
@@ -56,7 +60,39 @@ export default (state = initialState, action) => {
         ...state,
         favourites: [...action.payload]
       };
-
+    case GET_MOVIE_DETAILS:
+      const movie = { ...action.payload };
+      return {
+        ...state,
+        movieError: false,
+        movieDetails: {
+          id: movie.id,
+          title: movie.original_title,
+          overview: movie.overview,
+          poster: movie.poster_path,
+          backdrop: movie.backdrop_path,
+          release_date: new Date(movie.release_date)
+            .toDateString()
+            .split(" ")
+            .splice(1, 3)
+            .join(" "),
+          cast: movie.cast.map(person => ({
+            name: person.name,
+            profile: person.profile_path,
+            character: person.character
+          })),
+          crew: movie.crew.map(person => ({
+            name: person.name,
+            profile: person.profile_path,
+            job: person.job
+          }))
+        }
+      };
+    case GET_MOVIE_DETAILS_ERROR:
+      return {
+        ...state,
+        movieError: true
+      };
     default:
       return state;
   }
