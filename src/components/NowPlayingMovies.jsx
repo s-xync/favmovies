@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import "./css/NowPlayingMovies.css";
 import constants from "../config/constants";
+import { toggleFavourite } from "../store/actions/moviesActions";
 
 class NowPlayingMovies extends Component {
   waitingSpinner = () => {
@@ -29,7 +30,15 @@ class NowPlayingMovies extends Component {
               {movie.release_date}
             </h6>
             <p className="card-text">{movie.overview}</p>
-            <i className="far fa-heart heart-button" />
+            <i
+              className={
+                (this.props.favourites.includes(movie.id) ? "fas" : "far") +
+                " fa-heart heart-button"
+              }
+              onClick={() => {
+                this.props.toggleFavourite(movie.id);
+              }}
+            />
             <Link className="link-tag" to={"/movie/" + movie.id}>
               More Info
             </Link>
@@ -59,12 +68,15 @@ class NowPlayingMovies extends Component {
 const mapStateToProps = ({ movies }) => {
   return {
     moviesArray: movies.moviesArray,
-    moviesError: movies.moviesError
+    moviesError: movies.moviesError,
+    favourites: movies.favourites
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    toggleFavourite: movieId => dispatch(toggleFavourite(movieId))
+  };
 };
 
 export default connect(

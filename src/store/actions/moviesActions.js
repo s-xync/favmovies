@@ -1,4 +1,8 @@
-import { GET_NOW_PLAYING, GET_NOW_PLAYING_ERROR } from "../types";
+import {
+  GET_NOW_PLAYING,
+  GET_NOW_PLAYING_ERROR,
+  TOGGLE_FAVOURITE
+} from "../types";
 import constants from "../../config/constants";
 import axios from "axios";
 
@@ -29,4 +33,11 @@ export const getNowPlaying = () => dispatch => {
         payload: null
       });
     });
+};
+
+export const toggleFavourite = movieId => dispatch => {
+  dispatch({
+    type: TOGGLE_FAVOURITE,
+    payload: movieId
+  });
 };
