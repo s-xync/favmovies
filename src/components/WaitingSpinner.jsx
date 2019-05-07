@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./WaitingSpinner.css";
+import "./css/WaitingSpinner.css";
 
 const WaitingSpinner = () => {
   return (

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import "./css/FavouriteMovies.css";
+import "./css/MovieCard.css";
 
 import constants from "../config/constants";
 import { toggleFavourite } from "../store/actions/moviesActions";
