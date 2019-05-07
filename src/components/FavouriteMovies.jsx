@@ -5,6 +5,7 @@ import "./css/FavouriteMovies.css";
 
 import MovieCard from "./MovieCard";
 import WaitingSpinner from "./WaitingSpinner";
+import Error from "./Error";
 
 class FavouriteMovies extends Component {
   componentDidMount() {
@@ -12,24 +13,28 @@ class FavouriteMovies extends Component {
   }
 
   render() {
-    if (this.props.moviesArray) {
-      return (
-        <div className="container">
-          <h1>Favourite Movies</h1>
-          <hr />
-          <div className="row">
-            {this.props.moviesArray
-              .filter(movie => this.props.favourites.includes(movie.id))
-              .map(movie => (
-                <div key={movie.id} className="col-md-4 col-sm-12 movie-card">
-                  <MovieCard movie={movie} />
-                </div>
-              ))}
+    if (!this.props.moviesError) {
+      if (this.props.moviesArray) {
+        return (
+          <div className="container">
+            <h1>Favourite Movies</h1>
+            <hr />
+            <div className="row">
+              {this.props.moviesArray
+                .filter(movie => this.props.favourites.includes(movie.id))
+                .map(movie => (
+                  <div key={movie.id} className="col-md-4 col-sm-12 movie-card">
+                    <MovieCard movie={movie} />
+                  </div>
+                ))}
+            </div>
           </div>
-        </div>
-      );
+        );
+      } else {
+        return <WaitingSpinner />;
+      }
     } else {
-      return <WaitingSpinner />;
+      return <Error />;
     }
   }
 }
