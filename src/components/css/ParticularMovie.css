@@ -1,0 +1,11 @@
+.backdrop-image {
+  text-align: center;
+}
+
+.backdrop-image > img {
+  width: 85%;
+}
+
+.movie-card {
+  margin-top: 2rem;
+}

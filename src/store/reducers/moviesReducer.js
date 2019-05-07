@@ -4,7 +4,8 @@ import {
   TOGGLE_FAVOURITE,
   HYDRATE_FAVOURITES,
   GET_MOVIE_DETAILS,
-  GET_MOVIE_DETAILS_ERROR
+  GET_MOVIE_DETAILS_ERROR,
+  CLEAR_MOVIE_DETAILS
 } from "../types";
 
 const initialState = {
@@ -93,6 +94,14 @@ export default (state = initialState, action) => {
         ...state,
         movieError: true
       };
+
+    case CLEAR_MOVIE_DETAILS:
+      return {
+        ...state,
+        movieDetails: null,
+        movieError: false
+      };
+
     default:
       return state;
   }

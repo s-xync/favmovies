@@ -7,6 +7,10 @@ import MovieCard from "./MovieCard";
 import WaitingSpinner from "./WaitingSpinner";
 
 class NowPlayingMovies extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     if (this.props.moviesArray) {
       return (
@@ -15,7 +19,9 @@ class NowPlayingMovies extends Component {
           <hr />
           <div className="row">
             {this.props.moviesArray.map(movie => (
-              <MovieCard key={movie.id} movie={movie} />
+              <div className="col-md-4 col-sm-12 movie-card">
+                <MovieCard key={movie.id} movie={movie} />
+              </div>
             ))}
           </div>
         </div>

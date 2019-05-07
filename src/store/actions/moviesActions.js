@@ -4,7 +4,8 @@ import {
   TOGGLE_FAVOURITE,
   HYDRATE_FAVOURITES,
   GET_MOVIE_DETAILS,
-  GET_MOVIE_DETAILS_ERROR
+  GET_MOVIE_DETAILS_ERROR,
+  CLEAR_MOVIE_DETAILS
 } from "../types";
 import constants from "../../config/constants";
 import axios from "axios";
@@ -76,8 +77,6 @@ export const getMovieDetails = movieId => async dispatch => {
 
     allCastAndCrewDetails = allCastAndCrewDetails.data;
 
-    console.log({ allMovieDetails });
-    console.log({ allCastAndCrewDetails });
     if (allMovieDetails && allCastAndCrewDetails) {
       dispatch({
         type: GET_MOVIE_DETAILS,
@@ -100,4 +99,11 @@ export const getMovieDetails = movieId => async dispatch => {
       payload: null
     });
   }
+};
+
+export const clearMovieDetails = () => dispatch => {
+  dispatch({
+    type: CLEAR_MOVIE_DETAILS,
+    payload: null
+  });
 };
