@@ -1,7 +1,7 @@
 import { GET_NOW_PLAYING, GET_NOW_PLAYING_ERROR } from "../types";
 
 const initialState = {
-  movies: null,
+  moviesArray: null,
   moviesError: false
 };
 
@@ -12,11 +12,16 @@ export default (state = initialState, action) => {
         id: movie.id,
         title: movie.original_title,
         overview: movie.overview,
-        poster: movie.poster_path
+        poster: movie.poster_path,
+        release_date: new Date(movie.release_date)
+          .toDateString()
+          .split(" ")
+          .splice(1, 3)
+          .join(" ")
       }));
       return {
         ...state,
-        movies: [...movies],
+        moviesArray: [...movies],
         moviesError: false
       };
     case GET_NOW_PLAYING_ERROR:
