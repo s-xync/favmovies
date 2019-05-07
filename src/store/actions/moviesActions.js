@@ -1,7 +1,8 @@
 import {
   GET_NOW_PLAYING,
   GET_NOW_PLAYING_ERROR,
-  TOGGLE_FAVOURITE
+  TOGGLE_FAVOURITE,
+  HYDRATE_FAVOURITES
 } from "../types";
 import constants from "../../config/constants";
 import axios from "axios";
@@ -39,5 +40,12 @@ export const toggleFavourite = movieId => dispatch => {
   dispatch({
     type: TOGGLE_FAVOURITE,
     payload: movieId
+  });
+};
+
+export const hydrateFavourites = favourites => dispatch => {
+  dispatch({
+    type: HYDRATE_FAVOURITES,
+    payload: favourites
   });
 };

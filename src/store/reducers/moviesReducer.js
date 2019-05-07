@@ -1,7 +1,8 @@
 import {
   GET_NOW_PLAYING,
   GET_NOW_PLAYING_ERROR,
-  TOGGLE_FAVOURITE
+  TOGGLE_FAVOURITE,
+  HYDRATE_FAVOURITES
 } from "../types";
 
 const initialState = {
@@ -37,11 +38,9 @@ export default (state = initialState, action) => {
 
     case TOGGLE_FAVOURITE:
       if (state.favourites.includes(action.payload)) {
-        const tempFavourites = state.favourites.filter(movieId => {
-          if (action.payload !== movieId) {
-            return movieId;
-          }
-        });
+        const tempFavourites = state.favourites.filter(
+          movieId => action.payload !== movieId
+        );
         return {
           ...state,
           favourites: [...tempFavourites]
@@ -52,6 +51,11 @@ export default (state = initialState, action) => {
           favourites: [...state.favourites, action.payload]
         };
       }
+    case HYDRATE_FAVOURITES:
+      return {
+        ...state,
+        favourites: [...action.payload]
+      };
 
     default:
       return state;
