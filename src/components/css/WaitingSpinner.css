@@ -1,0 +1,8 @@
+.waiting-spinner {
+  text-align: center;
+}
+
+.waiting-spinner i {
+  margin-top: 3rem;
+  font-size: 7rem;
+}
