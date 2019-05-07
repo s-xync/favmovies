@@ -19,8 +19,8 @@ class NowPlayingMovies extends Component {
           <hr />
           <div className="row">
             {this.props.moviesArray.map(movie => (
-              <div className="col-md-4 col-sm-12 movie-card">
-                <MovieCard key={movie.id} movie={movie} />
+              <div key={movie.id} className="col-md-4 col-sm-12 movie-card">
+                <MovieCard movie={movie} />
               </div>
             ))}
           </div>

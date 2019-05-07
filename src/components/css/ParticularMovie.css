@@ -6,6 +6,10 @@
   width: 85%;
 }
 
-.movie-card {
+.movie-details {
   margin-top: 2rem;
+}
+
+.cast-crew-card {
+  margin-bottom: 1rem;
 }

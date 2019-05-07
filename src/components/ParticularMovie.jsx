@@ -10,6 +10,7 @@ import constants from "../config/constants";
 
 import WaitingSpinner from "./WaitingSpinner";
 import MovieCard from "./MovieCard";
+import CastCrewCard from "./CastCrewCard";
 
 class ParticularMovie extends Component {
   componentWillMount() {
@@ -37,9 +38,29 @@ class ParticularMovie extends Component {
               alt="Movie Backdrop"
             />
           </div>
-          <div className="row">
+          <div className="row movie-details">
             <div className="col-md-4 col-sm-12 movie-card">
               <MovieCard movie={movieDetails} />
+            </div>
+            <div className="col-md-8 col-sm-12">
+              <h2>Cast</h2>
+              <hr />
+              <div className="row">
+                {movieDetails.cast.map((person, index) => (
+                  <div key={index} className="col-md-4 col-sm-6 cast-crew-card">
+                    <CastCrewCard person={person} />
+                  </div>
+                ))}
+              </div>
+              <h2>Crew</h2>
+              <hr />
+              <div className="row">
+                {movieDetails.crew.map((person, index) => (
+                  <div key={index} className="col-md-4 col-sm-6 cast-crew-card">
+                    <CastCrewCard person={person} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

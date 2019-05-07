@@ -21,8 +21,8 @@ class FavouriteMovies extends Component {
             {this.props.moviesArray
               .filter(movie => this.props.favourites.includes(movie.id))
               .map(movie => (
-                <div className="col-md-4 col-sm-12 movie-card">
-                  <MovieCard key={movie.id} movie={movie} />
+                <div key={movie.id} className="col-md-4 col-sm-12 movie-card">
+                  <MovieCard movie={movie} />
                 </div>
               ))}
           </div>
