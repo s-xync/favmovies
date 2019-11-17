@@ -2,10 +2,10 @@
 
 ### You can access the live version of this project [here](https://favmovies.surge.sh/).
 
-With this app, you can view the list of movies that are playing now in theatres. You can also favourite and unfavourite the movies. All your favourite movies can be viewed in a seperate tab. You can also view full details of a movie including cast and crew.
+With this app, you can view the list of movies that are playing now in theatres. You can also favorite and unfavorite the movies. All your favorite movies can be viewed in a separate tab. You can also view full details of a movie including cast and crew.
 
 The app uses React / Redux for the front-end.
-The app uses LocalStorage of the browser to persist the user favourites.
+The app uses LocalStorage of the browser to persist the user favorites.
 The app uses Bootstrap for styled components like grids and cards.
 This app uses [The Movie DB](https://www.themoviedb.org) API.
 
