@@ -1,11 +1,12 @@
 import React from "react";
+import { Spinner } from "reactstrap";
 
 import "./css/WaitingSpinner.css";
 
 const WaitingSpinner = () => {
   return (
-    <div className="waiting-spinner">
-      <i className="fas fa-spinner fa-spin" />
+    <div className="waiting-spinner-outer">
+      <Spinner color="dark" className="waiting-spinner" />
     </div>
   );
 };
