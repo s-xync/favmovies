@@ -1,8 +1,9 @@
-.waiting-spinner {
+.waiting-spinner-outer {
   text-align: center;
 }
 
-.waiting-spinner i {
+.waiting-spinner {
   margin-top: 3rem;
-  font-size: 7rem;
+  height: 7rem;
+  width: 7rem;
 }

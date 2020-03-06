@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Img from "react-image";
+import { Spinner } from "reactstrap";
 
 import "./css/ParticularMovie.css";
 import {
@@ -35,8 +37,21 @@ class ParticularMovie extends Component {
             <h1>{movieDetails.title}</h1>
             <hr />
             <div className="backdrop-image">
-              <img
+              <Img
                 src={constants.tmdbImagesApi + movieDetails.backdrop}
+                loader={
+                  <div className="waiting-spinner-outer">
+                    <Spinner
+                      color="dark"
+                      style={{
+                        marginTop: "2rem",
+                        marginBottom: "2rem",
+                        height: "4rem",
+                        width: "4rem"
+                      }}
+                    />
+                  </div>
+                }
                 alt="Movie Backdrop"
               />
             </div>
@@ -96,7 +111,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ParticularMovie);
+export default connect(mapStateToProps, mapDispatchToProps)(ParticularMovie);
