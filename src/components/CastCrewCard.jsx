@@ -23,6 +23,7 @@ const CastCrewCard = ({ person }) => {
               />
             </div>
           }
+          alt="Crew Image"
         />
       </div>
       <div className="col-7">

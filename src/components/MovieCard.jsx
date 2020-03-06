@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Img from "react-image";
+import { Spinner } from "reactstrap";
 
 import "./css/MovieCard.css";
 
@@ -12,9 +14,17 @@ class MovieCard extends Component {
     const { movie } = this.props;
     return (
       <div className="card">
-        <img
-          className="card-img-top"
+        <Img
           src={constants.tmdbImagesApi + movie.poster}
+          className="card-img-top"
+          loader={
+            <div className="waiting-spinner-outer">
+              <Spinner
+                color="dark"
+                style={{ marginTop: "2rem", height: "3rem", width: "3rem" }}
+              />
+            </div>
+          }
           alt="Movie Poster"
         />
         <div className="card-body">
@@ -55,7 +65,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MovieCard);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
