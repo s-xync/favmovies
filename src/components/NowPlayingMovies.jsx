@@ -20,7 +20,7 @@ class NowPlayingMovies extends Component {
             <h1>Now Playing</h1>
             <hr />
             <div className="row">
-              {this.props.moviesArray.map(movie => (
+              {this.props.moviesArray.map((movie) => (
                 <div key={movie.id} className="col-md-4 col-sm-12 movie-card">
                   <MovieCard movie={movie} />
                 </div>
@@ -40,15 +40,12 @@ class NowPlayingMovies extends Component {
 const mapStateToProps = ({ movies }) => {
   return {
     moviesArray: movies.moviesArray,
-    moviesError: movies.moviesError
+    moviesError: movies.moviesError,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NowPlayingMovies);
+export default connect(mapStateToProps, mapDispatchToProps)(NowPlayingMovies);

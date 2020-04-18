@@ -55,13 +55,13 @@ class MovieCard extends Component {
 
 const mapStateToProps = ({ movies }) => {
   return {
-    favourites: movies.favourites
+    favourites: movies.favourites,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    toggleFavourite: movieId => dispatch(toggleFavourite(movieId))
+    toggleFavourite: (movieId) => dispatch(toggleFavourite(movieId)),
   };
 };
 
